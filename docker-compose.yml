@@ -1,0 +1,25 @@
+---
+version: '3'
+services:
+  umami:
+    image: ghcr.io/mikecao/umami:postgresql-latest
+    ports:
+      - "3000:3000"
+    environment:
+      MONGO_URI: mongodb://mongo:27017/umami
+      HASH_SALT: replace-me-with-a-random-string
+    depends_on:
+      - db
+    restart: always
+    links:
+      - db
+  db:
+    image: mongo:3.5
+    container_name: mongo    
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongodb:/data/db
+    restart: on-failure
+volumes:
+  umami-db-data:
