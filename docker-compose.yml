@@ -7,7 +7,7 @@ services:
       - "3000:3000"
     environment:
       MONGO_URI: mongodb://mongo:27017/umami
-      HASH_SALT: replace-me-with-a-random-string
+      HASH_SALT: ysqtc5647kgg
     depends_on:
       - db
     restart: always

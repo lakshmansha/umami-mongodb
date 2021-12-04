@@ -1,6 +1,10 @@
-# umami
+# umami-mongodb
 
 Umami is a simple, fast, website analytics alternative to Google Analytics.
+
+# Credits
+
+- Orignal Version of [Umami](https://umami.is) developed by [Mike Cao](https://mikecao.com/).
 
 ## Getting started
 
@@ -11,34 +15,22 @@ A detailed getting started guide can be found at [https://umami.is/docs/](https:
 ### Requirements
 
 - A server with Node.js 12 or newer
-- A database (MySQL or Postgresql)
+- A database (mongodb)
 
 ### Get the source code and install packages
 
 ```
-git clone https://github.com/mikecao/umami.git
-cd umami
+git clone https://github.com/lakshmansha/umami-mongodb.git
+cd umami-mongodb
 npm install
 ```
 
 ### Create database tables
 
-Umami supports [MySQL](https://www.mysql.com/) and [Postgresql](https://www.postgresql.org/).
-Create a database for your Umami installation and install the tables with the included scripts.
+Umami supports [MongoDb](https://www.mongodb.com/).
+Create a database for your Umami installation and create the tables on App Intialization.
 
-For MySQL:
-
-```
-mysql -u username -p databasename < sql/schema.mysql.sql
-```
-
-For Postgresql:
-
-```
-psql -h hostname -U username -d databasename -f sql/schema.postgresql.sql
-```
-
-This will also create a login account with username **admin** and password **umami**.
+The Account Seeders will create Admin Account with username **admin** and password **umami**.
 
 ### Configure umami
 
@@ -51,9 +43,8 @@ HASH_SALT=(any random string)
 
 The connection url is in the following format:
 ```
-postgresql://username:mypassword@localhost:5432/mydb
+mongodb://username:mypassword@localhost:27017/umami
 
-mysql://username:mypassword@localhost:3306/mydb
 ```
 
 The `HASH_SALT` is used to generate unique values for your installation.
@@ -76,20 +67,15 @@ or change the [port](https://nextjs.org/docs/api-reference/cli#production) to se
 
 ## Installing with Docker
 
-To build the umami container and start up a Postgres database, run:
+To build the umami container and start up a MongoDb database, run:
 
 ```bash
 docker-compose up
 ```
 
-Alternatively, to pull just the Umami Docker image with PostgreSQL support:
+Alternatively, to pull just the Umami Docker image for MongoDB support:
 ```bash
-docker pull ghcr.io/mikecao/umami:postgresql-latest
-```
-
-Or with MySQL support:
-```bash
-docker pull ghcr.io/mikecao/umami:mysql-latest
+docker pull lakshmansha/umami-mongodb:latest
 ```
 
 ## Getting updates

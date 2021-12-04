@@ -26,7 +26,7 @@ export default function Header() {
 
   return (
     <nav className="container" dir={dir}>
-      {user?.is_admin && <UpdateNotice />}
+      {/* {user?.is_admin && <UpdateNotice />} */}
       <div className={classNames(styles.header, 'row align-items-center')}>
         <div className={styles.nav}>
           <div className="">
