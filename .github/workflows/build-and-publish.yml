@@ -53,8 +53,8 @@ jobs:
             ghcr.io/lakshmansha/umami-mongodb:${{ github.event.inputs.version }}
             lakshmansha/umami-mongodb:latest
             ghcr.io/lakshmansha/umami-mongodb:latest
-          # build on feature branches, push only on main branch
-          push: ${{ github.ref == 'refs/heads/main' }}
+          # build on feature branches, push only on master branch
+          push: ${{ github.ref == 'refs/heads/master' }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
