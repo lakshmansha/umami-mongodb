@@ -1,13 +1,14 @@
 name: Build and Publish
 
 on:
-  # run it on push to the default repository branch
-  push:
-    branches: [main]
-  # run it during pull request
-  pull_request:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version for Docker'
+        required: true
+        default: '1.0.0'    
 
-defaults:
+jobs:
   # define job to build and publish docker image
   build-and-push-docker-image:
     name: Build Docker image and push to repositories
@@ -48,8 +49,8 @@ defaults:
           context: .
           # Note: tags has to be all lower-case
           tags: |
-            lakshmansha/umami-mongodb:${{ steps.package-version.outputs.current-version}}
-            ghcr.io/lakshmansha/umami-mongodb:${{ steps.package-version.outputs.current-version}}
+            lakshmansha/umami-mongodb:${{ github.event.inputs.version }}
+            ghcr.io/lakshmansha/umami-mongodb:${{ github.event.inputs.version }}
             lakshmansha/umami-mongodb:latest
             ghcr.io/lakshmansha/umami-mongodb:latest
           # build on feature branches, push only on main branch
