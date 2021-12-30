@@ -1,5 +1,9 @@
 # Release History
 
+## Version 1.0.3 - Date 31-Dec-2021
+
+- Fixed Page Visitors Fetch Query.
+
 ## Version 1.0.2 - Date 15-Dec-2021
 
 - Fixed Account Fetch Query.
